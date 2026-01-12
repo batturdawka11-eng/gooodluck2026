@@ -1,55 +1,67 @@
 <!DOCTYPE html>
-<html>
+<html lang="mn">
 <head>
-    <meta charset="UTF-8">
-    <title>Cute Game</title>
-    <style>
-        body {
-            background: pink;
-            overflow: hidden;
-            margin: 0;
-            height: 100vh;
-        }
-        #char {
-            position: absolute;
-            font-size: 70px;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-        #score {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            font-size: 25px;
-            font-family: Arial;
-        }
-    </style>
-</head>
-<body>
-
-<div id="score">Оноо: 0</div>
-<div id="char">🐣</div>
-
-<script>
-    let score = 0;
-    const char = document.getElementById("char");
-    const scoreBox = document.getElementById("score");
-
-    function moveChar() {
-        let x = Math.random() * (window.innerWidth - 70);
-        let y = Math.random() * (window.innerHeight - 70);
-        char.style.left = x + "px";
-        char.style.top = y + "px";
+  <meta charset="UTF-8">
+  <title>Хайрдаа бичсэн захиа</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #ffb6ff, #ffe3f1, #b5ffff);
+      font-family: "Comic Sans MS", system-ui, sans-serif;
+      overflow: hidden;
     }
 
-    char.addEventListener("click", () => {
-        score++;
-        scoreBox.textContent = "Оноо: " + score;
-        moveChar();
-    });
+    /* Хөөрхөн хөвөх зүрхнүүд */
+    .heart {
+      position: fixed;
+      font-size: 24px;
+      opacity: 0.7;
+      animation: float 6s linear infinite;
+      pointer-events: none;
+    }
+    .heart:nth-child(1) { left: 10%; animation-delay: 0s; }
+    .heart:nth-child(2) { left: 25%; animation-delay: 1s; }
+    .heart:nth-child(3) { left: 40%; animation-delay: 2s; }
+    .heart:nth-child(4) { left: 60%; animation-delay: 3s; }
+    .heart:nth-child(5) { left: 80%; animation-delay: 4s; }
 
-    moveChar();
-</script>
+    @keyframes float {
+      0%   { bottom: -10%; transform: translateX(0) scale(0.8); opacity: 0; }
+      30%  { opacity: 1; }
+      100% { bottom: 110%; transform: translateX(-15px) scale(1.2); opacity: 0; }
+    }
 
-</body>
-</html>
+    /* Захианы дугтуй + цаас */
+    .envelope-wrapper {
+      position: relative;
+      padding: 20px;
+    }
+
+    .envelope {
+      position: relative;
+      background: #ffedf3;
+      width: min(380px, 90vw);
+      margin: auto;
+      border-radius: 18px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+      padding: 70px 24px 28px;
+      text-align: center;
+    }
+
+    /* Дугтуйн гурвалжин таг */
+    .envelope::before {
+      content: "";
+      position: absolute;
+      top: -60px;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      background: #ffc4
