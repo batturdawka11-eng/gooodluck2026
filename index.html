@@ -1,16 +1,48 @@
 <!DOCTYPE html>
+<html>
 <head>
-    <head>dawka-iin web huudas</head>
+    <meta charset="UTF-8">
+    <title>Танд ирсэн зурвас</title>
+    <style>
+        body{
+            background: linear-gradient(135deg, #ffb6ff, #b5ffff);
+            font-family: 'Comic Sans MS', sans-serif;
+            text-align: center;
+            padding-top: 100px;
+            color: #333;
+        }
+        .box{
+            background: white;
+            width: 300px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0px 0px 20px rgba(0,0,0,0.2);
+            animation: pop 1s ease;
+        }
+        @keyframes pop {
+            0% { transform: scale(0.1); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .cute{
+            font-size: 100px;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+        h2{
+            font-size: 20px;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-    <h1>sainuu, dawka!</h1>
-    <p>ene bol minii anhnii HTML huudas.</p>
-    <a href="https://www.youtube.com/">youtube ruu ochih</a>
-    <img src="https://via.placeholder.com/150" alt="jishee zurag">
-    </body>
-    </html>
-    <head>
-  <title>Миний хуудас</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<link rel="stylesheet" href="style.css">
+    <div class="box">
+        <div class="cute">✨</div>
+        <h2>2026 онд ЧИ маш ТОМ амжилт гаргана! 💖</h2>
+        <p>Өөртөө итгээрэй. Чиний эрч хүч, хөдөлмөр бүгд чамайг амжилт руу аваачна!</p>
+    </div>
+</body>
+</html>
