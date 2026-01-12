@@ -2,47 +2,54 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Танд ирсэн зурвас</title>
+    <title>Cute Game</title>
     <style>
-        body{
-            background: linear-gradient(135deg, #ffb6ff, #b5ffff);
-            font-family: 'Comic Sans MS', sans-serif;
-            text-align: center;
-            padding-top: 100px;
-            color: #333;
+        body {
+            background: pink;
+            overflow: hidden;
+            margin: 0;
+            height: 100vh;
         }
-        .box{
-            background: white;
-            width: 300px;
-            margin: auto;
-            padding: 20px;
-            border-radius: 20px;
-            box-shadow: 0px 0px 20px rgba(0,0,0,0.2);
-            animation: pop 1s ease;
+        #char {
+            position: absolute;
+            font-size: 70px;
+            cursor: pointer;
+            transition: 0.2s;
         }
-        @keyframes pop {
-            0% { transform: scale(0.1); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-        .cute{
-            font-size: 100px;
-            animation: bounce 2s infinite;
-        }
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-        }
-        h2{
-            font-size: 20px;
-            margin-top: 10px;
+        #score {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            font-size: 25px;
+            font-family: Arial;
         }
     </style>
 </head>
 <body>
-    <div class="box">
-        <div class="cute">✨</div>
-        <h2>2026 онд ЧИ маш ТОМ амжилт гаргана! 💖</h2>
-        <p>Өөртөө итгээрэй. Чиний эрч хүч, хөдөлмөр бүгд чамайг амжилт руу аваачна!</p>
-    </div>
+
+<div id="score">Оноо: 0</div>
+<div id="char">🐣</div>
+
+<script>
+    let score = 0;
+    const char = document.getElementById("char");
+    const scoreBox = document.getElementById("score");
+
+    function moveChar() {
+        let x = Math.random() * (window.innerWidth - 70);
+        let y = Math.random() * (window.innerHeight - 70);
+        char.style.left = x + "px";
+        char.style.top = y + "px";
+    }
+
+    char.addEventListener("click", () => {
+        score++;
+        scoreBox.textContent = "Оноо: " + score;
+        moveChar();
+    });
+
+    moveChar();
+</script>
+
 </body>
 </html>
