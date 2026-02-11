@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Миний Валентин 💖</title>
+<title>Миний Валентин 💜</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300&display=swap" rel="stylesheet">
 
 <style>
 body{
@@ -12,102 +14,200 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-    flex-direction:column;
-    background: linear-gradient(135deg,#ff4e8a,#ff9a9e,#fad0c4);
-    font-family: 'Segoe UI', sans-serif;
+    background: radial-gradient(circle at 20% 30%, #fbc2eb, transparent 40%),
+                radial-gradient(circle at 80% 70%, #e0c3fc, transparent 40%),
+                linear-gradient(135deg,#f9c5d1,#e0c3fc);
+    font-family:'Poppins', sans-serif;
     overflow:hidden;
-    color:white;
     text-align:center;
 }
 
-h1{
-    font-size:3rem;
-    margin-bottom:40px;
-    animation: fadeIn 2s ease-in-out;
+/* GLASS CARD */
+.glass{
+    backdrop-filter: blur(20px);
+    background: rgba(255,255,255,0.25);
+    padding:40px;
+    border-radius:30px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.2);
+    max-width:450px;
+    animation:fadeIn 2s ease;
 }
 
-.buttons{
-    position:relative;
+h1{
+    font-family:'Great Vibes', cursive;
+    font-size:3rem;
+    color:#b76e79;
+    min-height:60px;
 }
+
+.message{
+    opacity:0;
+    transition:2s;
+    font-size:15px;
+    color:#4a4a4a;
+}
+
+.show{opacity:1;}
 
 button{
-    padding:15px 40px;
-    font-size:1.5rem;
+    margin-top:20px;
+    padding:12px 30px;
     border:none;
-    border-radius:40px;
+    border-radius:30px;
+    background:#d291bc;
+    color:white;
+    font-size:1rem;
     cursor:pointer;
-    margin:20px;
     transition:0.3s;
 }
+button:hover{background:#b76e79;}
 
-#yes{
-    background:white;
-    color:#ff2e63;
+/* ROSE */
+.rose{
+    position:absolute;
+    top:-10px;
+    font-size:20px;
+    animation:fall 8s linear infinite;
+}
+@keyframes fall{
+    to{transform:translateY(110vh) rotate(360deg);}
 }
 
-#no{
-    background:black;
-    color:white;
+/* SPARKLE */
+.sparkle{
+    position:absolute;
+    width:6px;
+    height:6px;
+    background:white;
+    border-radius:50%;
+    box-shadow:0 0 10px white;
+    animation:sparkleAnim 3s linear infinite;
+}
+@keyframes sparkleAnim{
+    0%,100%{opacity:0;}
+    50%{opacity:1;}
+}
+
+/* MOUSE HEART */
+.mouse-heart{
+    position:absolute;
+    font-size:18px;
+    animation:floatUp 2s ease-out forwards;
+}
+@keyframes floatUp{
+    to{transform:translateY(-50px); opacity:0;}
 }
 
 @keyframes fadeIn{
-    from{opacity:0; transform:translateY(-20px);}
+    from{opacity:0; transform:translateY(20px);}
     to{opacity:1; transform:translateY(0);}
 }
 
-.heart{
-    position:absolute;
-    color:white;
-    animation:float 6s linear infinite;
-}
-
-@keyframes float{
-    from{transform:translateY(100vh) scale(1);}
-    to{transform:translateY(-10vh) scale(1.5);}
-}
-
-.invite{
-    font-size:2rem;
-    animation: fadeIn 1.5s ease-in-out;
+img{
+    width:260px;
+    border-radius:20px;
+    margin-top:20px;
+    box-shadow:0 15px 30px rgba(0,0,0,0.3);
 }
 </style>
 </head>
-
 <body>
 
-<h1 id="question">Миний Валентин болооч 💖</h1>
+<div class="glass" id="card">
+    <h1 id="typing"></h1>
+    <div id="countdown" style="margin-bottom:10px;font-size:14px;"></div>
 
-<div class="buttons">
-    <button id="yes" onclick="accept()">YES 💘</button>
-    <button id="no" onclick="growYes()">NO 🙈</button>
+    <div class="message" id="text">
+        Миний амьдралд хамгийн сайхан болж ирсэн чамдаа баярлалаа... 💖<br><br>
+        Валентины баярыг тэмдэглэх шалтгаан минь чи болохоор 
+        энэ бүх зүйлийг зөвхөн чамдаа зориуллаа.<br><br>
+        Чи миний инээмсэглэлийн шалтгаан,
+        зүрхний минь хамгийн дулаан мэдрэмж.<br><br>
+        2.14-нд надтай болзоонд яваач 🌸
+    </div>
+
+    <button onclick="showForever()">Тийм 💍</button>
 </div>
 
+<audio autoplay loop>
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5c4e6b4e2b.mp3?filename=romantic-piano-110624.mp3" type="audio/mpeg">
+</audio>
+
 <script>
-let yesSize = 1.5;
-
-function growYes(){
-    yesSize += 0.5;
-    document.getElementById("yes").style.fontSize = yesSize + "rem";
+/* TYPING TITLE */
+const text="Миний Валентин 💜";
+let i=0;
+function type(){
+    if(i<text.length){
+        document.getElementById("typing").innerHTML+=text.charAt(i);
+        i++;
+        setTimeout(type,100);
+    }
 }
+type();
 
-function accept(){
-    document.body.innerHTML = `
-        <h1 class="invite">💌 2.14-нд надтай болзоонд яваач 💐</h1>
-        <p style="font-size:1.5rem;">Чи миний Валентин болсон шүү ❤️</p>
-        <p style="font-size:1.2rem;">Байршил: Surprise 😌<br>Цаг: 19:00</p>
-    `;
-    setInterval(createHeart,200);
+/* SHOW MESSAGE */
+setTimeout(()=>{document.getElementById("text").classList.add("show");},1500);
+
+/* COUNTDOWN */
+function updateCountdown(){
+    const target=new Date("Feb 14, 2026 00:00:00").getTime();
+    const now=new Date().getTime();
+    const gap=target-now;
+
+    const d=Math.floor(gap/(1000*60*60*24));
+    const h=Math.floor((gap%(1000*60*60*24))/(1000*60*60));
+    const m=Math.floor((gap%(1000*60*60))/(1000*60));
+
+    document.getElementById("countdown").innerHTML=
+    "2.14 хүртэл: "+d+" өдөр "+h+" цаг "+m+" мин";
 }
+setInterval(updateCountdown,1000);
 
-function createHeart(){
-    let heart = document.createElement("div");
-    heart.className="heart";
+/* ROSES */
+function createRose(){
+    let rose=document.createElement("div");
+    rose.className="rose";
+    rose.innerHTML="🌹";
+    rose.style.left=Math.random()*100+"vw";
+    document.body.appendChild(rose);
+    setTimeout(()=>{rose.remove();},8000);
+}
+setInterval(createRose,900);
+
+/* SPARKLES */
+function createSparkle(){
+    let s=document.createElement("div");
+    s.className="sparkle";
+    s.style.left=Math.random()*100+"vw";
+    s.style.top=Math.random()*100+"vh";
+    document.body.appendChild(s);
+    setTimeout(()=>{s.remove();},3000);
+}
+setInterval(createSparkle,600);
+
+/* MOUSE HEART EFFECT */
+document.addEventListener("mousemove",function(e){
+    let heart=document.createElement("div");
+    heart.className="mouse-heart";
     heart.innerHTML="💖";
-    heart.style.left=Math.random()*100+"vw";
-    heart.style.fontSize=Math.random()*20+20+"px";
+    heart.style.left=e.pageX+"px";
+    heart.style.top=e.pageY+"px";
     document.body.appendChild(heart);
+    setTimeout(()=>{heart.remove();},2000);
+});
 
-    setTimeout(()=>{heart.remove();},6000);
+/* FOREVER SCENE */
+function showForever(){
+    document.body.innerHTML=`
+        <div class="glass">
+            <h1>Forever with you 💍💜</h1>
+            <p>2.14 — Миний Валентин тэмдэглэх шалтгаан минь 🌸</p>
+            <img src="us.jpg">
+        </div>
+    `;
+    setInterval(createRose,300);
+    setInterval(createSparkle,200);
 }
 </script>
 
