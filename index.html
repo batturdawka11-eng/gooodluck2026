@@ -1,48 +1,95 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>For My Love ❤️</title>
+<meta charset="UTF-8">
+<title>Will You Be My Valentine? 💖</title>
+
 <style>
 body {
-    background: linear-gradient(to right, #ff9a9e, #fad0c4);
+    background: linear-gradient(to right, #ff758c, #ff7eb3);
     text-align: center;
     font-family: Arial;
+    overflow: hidden;
     color: white;
 }
 
 h1 {
     margin-top: 100px;
-    font-size: 50px;
+    font-size: 40px;
 }
 
 button {
     padding: 15px 30px;
     font-size: 20px;
     border: none;
-    border-radius: 20px;
-    background: white;
-    color: #ff4e50;
+    border-radius: 25px;
     cursor: pointer;
+    position: absolute;
 }
 
-button:hover {
-    background: pink;
+#yes {
+    left: 40%;
+    top: 50%;
+    background: white;
+    color: #ff4e50;
+}
+
+#no {
+    left: 55%;
+    top: 50%;
+    background: black;
+    color: white;
+}
+
+.heart {
+    position: fixed;
+    top: -10px;
+    color: red;
+    font-size: 20px;
+    animation: fall 5s linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh);
+    }
 }
 </style>
 </head>
 
 <body>
 
-<h1>Happy Valentine's Day 💖</h1>
-<p>To the most beautiful girl in my world 🌍</p>
+<h1>Will you be my Valentine? 💕</h1>
 
-<button onclick="showLove()">Click me 💌</button>
+<button id="yes" onclick="love()">YES 💖</button>
+<button id="no" onmouseover="moveNo()">NO 😏</button>
 
 <script>
-function showLove() {
-    alert("I love you more than words can say ❤️");
+function moveNo() {
+    let x = Math.random() * window.innerWidth;
+    let y = Math.random() * window.innerHeight;
+    document.getElementById("no").style.left = x + "px";
+    document.getElementById("no").style.top = y + "px";
+}
+
+function love() {
+    document.body.innerHTML = "<h1>You are mine forever 💍❤️</h1>";
+    setInterval(createHeart, 200);
+}
+
+function createHeart() {
+    let heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 5000);
 }
 </script>
 
 </body>
 </html>
+
